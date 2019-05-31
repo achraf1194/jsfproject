@@ -1,0 +1,25 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	template="/template/template.xhtml"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:define name="content">
+<h:form>
+	<h:panelGrid columns="2">
+		<h:outputLabel value="Login"/>
+		<h:inputText value="#{identity.user.email}" />
+	
+		<h:outputText value="Password" />
+		
+		<h:inputSecret value="#{identity.user.passwordHash}" />
+		<p:commandButton action="#{identity.doLogin()}" value="login" />
+	</h:panelGrid>
+</h:form>
+</ui:define>
+
+
+</ui:composition>

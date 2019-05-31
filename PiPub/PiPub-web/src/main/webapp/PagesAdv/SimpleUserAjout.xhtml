@@ -1,0 +1,73 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      template="/template/template.xhtml">
+<ui:define name="content">
+
+
+ 
+
+
+<center>
+<h1> Add your advertisement   </h1>
+</center>
+	<h:form id="form">
+
+        <p:tab title="Add Advertisement ! " >
+            <h:panelGrid columns="2" cellpadding="10" >
+             
+              <p:panelGrid columns="2"  > 
+
+
+
+
+<p:outputLabel value="Name" />
+<p:inputText value="#{advertisementBean.nom}" />
+
+
+<p:outputLabel value="Description" />
+<p:inputText value="#{advertisementBean.description}" />
+
+
+<p:outputLabel  value="Picture :" /> 				
+				<p:fileUpload style="width:700px;" value="#{advertisementBean.file}" fileUploadListener="#{advertisementBean.handleFileUpload}" mode="advanced" dragDropSupport="false"
+           sizeLimit="1000000" fileLimit="1"  allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
+
+
+   
+ <h:panelGrid columns="2" cellpadding="5">
+            <p:outputLabel for="button" value="Expiration Date" />
+        <p:calendar id="button" value="#{advertisementBean.dateFin}" showOn="button" />
+ </h:panelGrid>
+		
+
+
+
+
+<h:commandButton  action="#{advertisementBean.addAdvertisement()}"   value="Add" />
+
+
+
+
+</p:panelGrid>
+	
+
+
+
+  
+            </h:panelGrid>
+       
+            
+        </p:tab>
+        
+   
+	
+	</h:form>
+	
+
+
+</ui:define>
+
+</ui:composition>

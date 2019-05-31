@@ -1,0 +1,100 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" template="/template/template.xhtml">
+	<ui:define name="content">
+
+
+		<center>
+			<h1>vos publicités</h1>
+		</center>
+
+
+		<h:form id="form">
+
+			<p:dataTable value="#{advertisementBean.dofindAllByUser()}" var="a"
+				border="1">
+
+
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="nom" />
+					</f:facet>
+					<h:outputText value="#{a.nom}" />
+				</p:column>
+
+
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Date ajout" />
+					</f:facet>
+					<h:outputText value="#{a.date}" />
+				</p:column>
+
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Description" />
+					</f:facet>
+					<h:outputText value="#{a.description}" />
+				</p:column>
+
+
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Image" />
+					</f:facet>
+
+					<p:graphicImage value="#{a.picture}" height="200" width="200" />
+
+				</p:column>
+
+
+
+
+
+
+
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Action" />
+					</f:facet>
+					<center>
+
+						<h:commandButton
+							action="#{advertisementBean.supprimer(a.idAdvertisement)}"
+							value="supprimer" />
+						<h:commandButton action="#{advertisementBean.modifier(a)}"
+							value="Modifier" />
+
+
+						<h:commandButton value=" Votre Publicité est dans la moderation"
+							rendered="#{a.isApproved}" />
+
+
+
+					</center>
+
+				</p:column>
+
+			</p:dataTable>
+
+		</h:form>
+
+		<h:form>
+			<h:commandLink action="#{advertisementBean.GoToHome()}"
+				value="Go home" />
+
+
+		</h:form>
+
+		<h:form>
+			<h:commandLink action="#{advertisementBean.GoSimpleUserAjout()}"
+				value="Ajouter pub" />
+
+		</h:form>
+
+
+	</ui:define>
+
+</ui:composition>
